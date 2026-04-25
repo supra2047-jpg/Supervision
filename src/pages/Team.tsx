@@ -12,12 +12,12 @@ export default function Team() {
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-50">Team Performance</h1>
-          <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] mt-1">Manage supervisors and view KPIs</p>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-50">ผลงานทีม</h1>
+          <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] mt-1">จัดการผู้นิเทศและดู KPI</p>
         </div>
         <button className="bg-indigo-600 text-white px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-700 active:scale-95 transition-all outline-none border border-indigo-500 flex items-center justify-center gap-2">
           <Plus className="w-4 h-4" />
-          Add Member
+          เพิ่มสมาชิก
         </button>
       </div>
 
@@ -27,7 +27,7 @@ export default function Team() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
             <input 
               type="text" 
-              placeholder="Search team members..." 
+              placeholder="ค้นหาสมาชิกทีม..." 
               className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 text-slate-50 placeholder:text-slate-600 font-bold"
             />
           </div>
@@ -45,21 +45,21 @@ export default function Team() {
                 />
               </div>
               <div className="relative z-10">
-                <h3 className="font-bold text-slate-50 text-base">Member Name {item}</h3>
-                <p className="text-[10px] text-indigo-400 font-bold uppercase tracking-widest mt-1">Senior Supervisor</p>
+                <h3 className="font-bold text-slate-50 text-base">สมาชิกคนที่ {item}</h3>
+                <p className="text-[10px] text-indigo-400 font-bold uppercase tracking-widest mt-1">ผู้นิเทศอาวุโส</p>
               </div>
               <div className="flex justify-center gap-2 mt-2 relative z-10 w-full pt-4 border-t border-slate-800/50">
                 <div className="text-center flex-1">
                   <p className="text-xl font-bold tracking-tighter text-slate-50">4{item}</p>
-                  <p className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">Visits</p>
+                  <p className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">การเยี่ยมชม</p>
                 </div>
                 <div className="text-center flex-1 border-l border-slate-800/50">
                   <p className="text-xl font-bold tracking-tighter text-emerald-400">9{item}%</p>
-                  <p className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">Accuracy</p>
+                  <p className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">ความแม่นยำ</p>
                 </div>
               </div>
               <button className="w-full bg-slate-800/50 hover:bg-slate-800 text-slate-300 transition-colors py-2.5 rounded-xl text-[10px] uppercase font-bold tracking-widest flex items-center justify-center gap-2 relative z-10 mt-2">
-                <Mail className="w-4 h-4" /> Message
+                <Mail className="w-4 h-4" /> ข้อความ
               </button>
             </div>
           ))}

@@ -96,10 +96,10 @@ export default function Dashboard() {
           {/* Chart Section */}
           <section className="bg-slate-900 p-6 rounded-3xl border border-slate-800 flex flex-col">
             <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
-              <h3 className="font-bold tracking-tight text-slate-50 text-lg">Monthly Supervision Activity</h3>
+              <h3 className="font-bold tracking-tight text-slate-50 text-lg">กิจกรรมการนิเทศรายเดือน</h3>
               <select className="text-[10px] font-bold uppercase tracking-widest border-slate-800 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 py-2 pl-3 pr-8 bg-slate-800 text-slate-400">
-                <option>Last 6 Months</option>
-                <option>Last Year</option>
+                <option>6 เดือนล่าสุด</option>
+                <option>ปีล่าสุด</option>
               </select>
             </div>
             <div className="h-64 bg-slate-950/50 rounded-2xl border border-slate-800 p-4 -mx-2 sm:mx-0">
@@ -118,7 +118,7 @@ export default function Dashboard() {
                         if (active && payload && payload.length) {
                             return (
                                 <div className="bg-indigo-600 text-white text-[10px] uppercase tracking-widest px-3 py-2 rounded-xl font-bold">
-                                    {payload[0].value} Supervisions
+                                    {payload[0].value} ครั้ง
                                 </div>
                             );
                         }
@@ -140,18 +140,18 @@ export default function Dashboard() {
           {/* Recent Activity */}
           <section className="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden">
             <div className="px-6 py-5 border-b border-slate-800 flex justify-between items-center bg-slate-950/20">
-              <h3 className="font-bold text-slate-50 text-lg tracking-tight">Recent Supervision Reports</h3>
-              <button className="text-indigo-400 text-[10px] font-bold uppercase tracking-widest hover:text-indigo-300">View All</button>
+              <h3 className="font-bold text-slate-50 text-lg tracking-tight">รายงานการนิเทศล่าสุด</h3>
+              <button className="text-indigo-400 text-[10px] font-bold uppercase tracking-widest hover:text-indigo-300">ดูทั้งหมด</button>
             </div>
             <div className="overflow-x-auto w-full">
               <table className="w-full text-left ml-0.5">
                 <thead className="bg-slate-900 text-slate-500 text-[10px] font-bold uppercase tracking-widest">
                   <tr>
-                    <th className="px-6 py-4">School Name</th>
-                    <th className="px-6 py-4">Date</th>
-                    <th className="px-6 py-4">Supervisor</th>
-                    <th className="px-6 py-4">Status</th>
-                    <th className="px-6 py-4 text-right">Action</th>
+                    <th className="px-6 py-4">ชื่อโรงเรียน</th>
+                    <th className="px-6 py-4">วันที่</th>
+                    <th className="px-6 py-4">ผู้นิเทศ</th>
+                    <th className="px-6 py-4">สถานะ</th>
+                    <th className="px-6 py-4 text-right">การกระทำ</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800">
@@ -160,7 +160,7 @@ export default function Dashboard() {
                       <p className="text-sm font-bold text-slate-50">Saint Mary Academy</p>
                       <p className="text-xs text-slate-500 mt-0.5">ID: SCH-2023-01</p>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-400 font-medium whitespace-nowrap">Oct 24, 2023</td>
+                    <td className="px-6 py-4 text-sm text-slate-400 font-medium whitespace-nowrap">24 ต.ค. 2023</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-3">
                         <img 
@@ -168,12 +168,12 @@ export default function Dashboard() {
                           alt="Dr. Sarah J." 
                           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLAR1DkLA6fWg8AjKIu65PJR-OQnZzIjdyUNxq1Y6uXPSMFnvItNDfIqGoynJ8Rq1KB5p5Ozw-wuzKIan-aXs1hekcUbQbPAc8vu2Y9Mo-PFk-H-dO9DhfUWKEzSDoUC1xTLrgAQKxp3eIcZgOS3bOuX-slwFMaIgT2-lnrdpvE-ytO3FxElt1sD97O0fYGGvXgf0o-xAkTyNgA4P74a13FNGY8ZXtyGsdBpeeKcbSU-r4JAaJwf3rXGFpTWdgookwbkuP2i_b6IE" 
                         />
-                        <span className="text-sm font-medium text-slate-300">Dr. Sarah J.</span>
+                        <span className="text-sm font-medium text-slate-300">ดร. สมหญิง</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] uppercase font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        Approved
+                        อนุมัติแล้ว
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right whitespace-nowrap">
@@ -187,7 +187,7 @@ export default function Dashboard() {
                       <p className="text-sm font-bold text-slate-50">Northern Technical High</p>
                       <p className="text-xs text-slate-500 mt-0.5">ID: SCH-2023-45</p>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-400 font-medium whitespace-nowrap">Oct 23, 2023</td>
+                    <td className="px-6 py-4 text-sm text-slate-400 font-medium whitespace-nowrap">23 ต.ค. 2023</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-3">
                         <img 
@@ -195,12 +195,12 @@ export default function Dashboard() {
                           alt="James Wilson" 
                           src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBGgOlj6K4xth5Z16ky20gAfAECAJldfcJFbhzic6EMVlYJRp_bp_H-oZj9Znb2dBd3JLTUQtws9_utOYUnYOJTwFqPlz_cufun1Nkjo8gGWgICpvmnHlpTdBFawkh4-duNaDIAsqyuEhzNO6ZQeITpzdGNBqQ2dYeXzq31uCdwFwTd0YerOns-_erkpFRcAWMNhuZcByzdzvcZT_ZSDvnWGFtCJP5B9njEXjezuWf7snwUf4Rl5acFdTOPoq7eVGdaPfePHhc7FM" 
                         />
-                        <span className="text-sm font-medium text-slate-300">James Wilson</span>
+                        <span className="text-sm font-medium text-slate-300">เจมส์ วิลสัน</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] uppercase font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                        Pending
+                        รออนุมัติ
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right whitespace-nowrap">
@@ -214,7 +214,7 @@ export default function Dashboard() {
                       <p className="text-sm font-bold text-slate-50">Riverside Elementary</p>
                       <p className="text-xs text-slate-500 mt-0.5">ID: SCH-2023-12</p>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-400 font-medium whitespace-nowrap">Oct 22, 2023</td>
+                    <td className="px-6 py-4 text-sm text-slate-400 font-medium whitespace-nowrap">22 ต.ค. 2023</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-3">
                         <img 
@@ -222,12 +222,12 @@ export default function Dashboard() {
                           alt="Maria Garcia" 
                           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi0feRWsU5n16XRxA9W7gUz5Kv76nQ4Q2ARhSL-ibbO9-DsmaBFkqeF1IOJslsboJXPkIVjkSBiISuZPc1zqLS5TwVCGcpmSNr5xvcBsv0iXYanZZFnaVvrgp-ua4GxhkEoCSN3SdB-XZJ-UwC8GurvjU80EWYzSVMY_4qz_wMlMbn4Qyj6Qk2C5Kyq4hekZCb6PPEHfbeHFDVZ-u3vJRbLxvkbg1LmLnFM8wKBQU-nn-M8YBmJebJ4UHbcrBesnTrYp8gsJoo6bE" 
                         />
-                        <span className="text-sm font-medium text-slate-300">Maria Garcia</span>
+                        <span className="text-sm font-medium text-slate-300">ดร. มาเรีย</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] uppercase font-bold bg-slate-800 text-slate-400 border border-slate-700">
-                        Draft
+                        ร่างบันทึก
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right whitespace-nowrap">
@@ -246,28 +246,28 @@ export default function Dashboard() {
         <div className="space-y-8 flex flex-col pt-1">
           {/* Quick Menu */}
           <section>
-            <h3 className="font-bold text-slate-50 mb-4 text-lg tracking-tight">Quick Menu</h3>
+            <h3 className="font-bold text-slate-50 mb-4 text-lg tracking-tight">เมนูด่วน</h3>
             <div className="grid grid-cols-2 gap-3">
               <button className="flex flex-col items-center justify-center p-4 bg-indigo-600 text-white rounded-2xl border border-indigo-500 shadow-sm hover:bg-indigo-700 active:scale-[0.98] transition-all group">
                 <PlusCircle className="w-8 h-8 mb-3 opacity-90 group-hover:scale-110 transition-transform" />
-                <span className="text-[10px] uppercase font-bold tracking-widest">Add Report</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest">เพิ่มรายงาน</span>
               </button>
               <button className="flex flex-col items-center justify-center p-4 bg-slate-900 border border-slate-800 text-slate-400 rounded-2xl shadow-sm hover:bg-slate-800 hover:text-slate-300 active:scale-[0.98] transition-all group">
                 <History className="w-8 h-8 mb-3 opacity-80 group-hover:scale-110 transition-transform text-indigo-400" />
-                <span className="text-[10px] uppercase font-bold tracking-widest">History</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest">ประวัติ</span>
               </button>
               <button className="flex flex-col items-center justify-center p-4 bg-slate-900 border border-slate-800 text-slate-400 rounded-2xl shadow-sm hover:bg-slate-800 hover:text-slate-300 active:scale-[0.98] transition-all group">
                 <FileText className="w-8 h-8 mb-3 opacity-80 group-hover:scale-110 transition-transform text-indigo-400" />
-                <span className="text-[10px] uppercase font-bold tracking-widest">Export PDF</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest">ส่งออก PDF</span>
               </button>
               <button className="flex flex-col items-center justify-center p-4 bg-slate-900 border border-slate-800 text-slate-400 rounded-2xl shadow-sm hover:bg-slate-800 hover:text-slate-300 active:scale-[0.98] transition-all group">
                 <Bell className="w-8 h-8 mb-3 opacity-80 group-hover:scale-110 transition-transform text-indigo-400" />
-                <span className="text-[10px] uppercase font-bold tracking-widest">Alerts</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest">การแจ้งเตือน</span>
               </button>
             </div>
             <button className="w-full mt-3 p-3.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-2xl font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 hover:bg-indigo-500/20 active:scale-[0.98] transition-all">
               <BarChart2 className="w-5 h-5" />
-              Monthly Summary
+              สรุปผลรายเดือน
             </button>
           </section>
 
@@ -320,10 +320,10 @@ export default function Dashboard() {
            {/* Info Card - Support */}
            <div className="relative overflow-hidden rounded-3xl bg-indigo-600 p-6 text-white shadow-xl border border-indigo-500">
             <div className="relative z-10">
-              <h4 className="font-bold text-lg mb-2 tracking-tight">System Support</h4>
-              <p className="text-xs text-indigo-100 mb-5 opacity-90 leading-relaxed font-medium uppercase tracking-widest">Need help with the supervision reports?<br/>Our support team is available 24/7.</p>
+              <h4 className="font-bold text-lg mb-2 tracking-tight">ความช่วยเหลือระบบ</h4>
+              <p className="text-xs text-indigo-100 mb-5 opacity-90 leading-relaxed font-medium uppercase tracking-widest">พบปัญหาในการใช้รายงานผลใช่ไหม?<br/>ให้ทีมความช่วยเหลือของเราช่วยคุณ</p>
               <button className="bg-slate-950 text-slate-50 px-5 py-2.5 rounded-xl text-[10px] uppercase tracking-widest font-bold hover:bg-slate-900 active:scale-95 transition-all outline-none ring-2 ring-indigo-400/50">
-                Contact Center
+                ติดต่อศูนย์ช่วยเหลือ
               </button>
             </div>
             <div className="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">

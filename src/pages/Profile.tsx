@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { 
   ShieldCheck, 
@@ -6,10 +7,16 @@ import {
   Mail, 
   Phone, 
   History, 
-  GraduationCap 
+  GraduationCap,
+  Save,
+  X
 } from "lucide-react";
 
 export default function Profile() {
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState("ดร. สมชาย ใจดี");
+  const [title, setTitle] = useState("ศึกษานิเทศก์ชำนาญการพิเศษ");
+
   return (
     <motion.div 
       className="space-y-6 max-w-5xl mx-auto"
@@ -26,7 +33,7 @@ export default function Profile() {
           
           <div className="w-32 h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden shrink-0 border-4 border-slate-800 shadow-md z-10 relative">
             <img 
-              alt="ดร. สมชาย ใจดี" 
+              alt={name} 
               className="w-full h-full object-cover" 
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ9T3_X1ne4XuVn195x0O21tH9ttt4lqWFg2KAi5ys5XvkLztTiVeMCMLG82lyu5SQzYf0f7K2mCeGDhHJdxDXUWSao7-f8mOKO3Te6F2QGqYuAGQ6_hHz1tcFzqmCmT7VRk8d8RCr702Q1fJ6PmLOSod33lqQi5nJGE9mEBGWlAtVIhwTsp6vkkbfjL8PO1G35gseW-5XibrhU_TLeH820TaZIX8pFu-9ukKkcES5T-jjiVc1mpoic9TnbufzsdQFKGRBo0jopus"
             />
@@ -34,13 +41,46 @@ export default function Profile() {
           
           <div className="flex-1 text-center md:text-left z-10 w-full">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
-              <div>
-                <h2 className="text-3xl font-bold text-slate-50 tracking-tight leading-tight">ดร. สมชาย ใจดี</h2>
-                <p className="text-indigo-400 font-bold text-[10px] uppercase tracking-widest mt-1">ศึกษานิเทศก์ชำนาญการพิเศษ</p>
+              <div className="flex-1">
+                {isEditing ? (
+                  <div className="space-y-2">
+                    <input 
+                      type="text" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-2xl font-bold text-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    />
+                    <input 
+                      type="text" 
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-xs font-bold text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-3xl font-bold text-slate-50 tracking-tight leading-tight">{name}</h2>
+                    <p className="text-indigo-400 font-bold text-[10px] uppercase tracking-widest mt-1">{title}</p>
+                  </>
+                )}
               </div>
-              <button className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-md w-full md:w-auto mt-2 md:mt-0">
-                  แก้ไขข้อมูลส่วนตัว
-              </button>
+              
+              <div className="flex gap-2 w-full md:w-auto mt-2 md:mt-0">
+                {isEditing ? (
+                   <>
+                      <button onClick={() => setIsEditing(false)} className="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-slate-700 active:scale-[0.98] transition-all shadow-md flex-1 md:flex-none flex items-center justify-center gap-1">
+                        <X className="w-3 h-3" /> ยกเลิก
+                      </button>
+                      <button onClick={() => setIsEditing(false)} className="px-4 py-3 bg-indigo-600 text-white rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-md flex-1 md:flex-none flex items-center justify-center gap-1">
+                        <Save className="w-3 h-3" /> บันทึก
+                      </button>
+                   </>
+                ) : (
+                   <button onClick={() => setIsEditing(true)} className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-md w-full md:w-auto">
+                      แก้ไขข้อมูลส่วนตัว
+                   </button>
+                )}
+              </div>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-start gap-3">
