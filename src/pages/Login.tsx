@@ -1,13 +1,37 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { School, User, Lock, Eye, Check, LogIn, Landmark } from "lucide-react";
+import { School, User, Lock, Eye, EyeOff, Check, LogIn, Landmark, Loader2, AlertCircle } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("somchai.jai@moe.go.th");
+  const [password, setPassword] = useState("password123");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/app/dashboard");
+    setIsLoading(true);
+    setError(null);
+
+    // Basic validation
+    if (!username.trim() || !password.trim()) {
+      setIsLoading(false);
+      setError("กรุณากรอกชื่อผู้ใช้งานที่และรหัสผ่าน");
+      return;
+    }
+
+    // Simulate API call delay
+    setTimeout(() => {
+      setIsLoading(false);
+      if (username === "admin" && password !== "admin") {
+         setError("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง");
+      } else {
+         navigate("/app/dashboard");
+      }
+    }, 1500);
   };
 
   return (
@@ -89,6 +113,13 @@ export default function Login() {
             </div>
             
             <form className="space-y-6" onSubmit={handleLogin}>
+              {error && (
+                <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 p-3 rounded-2xl flex items-start gap-3">
+                   <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                   <p className="text-sm font-bold">{error}</p>
+                </div>
+              )}
+
               {/* Username Field */}
               <div>
                 <label className="block text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 mt-2" htmlFor="username">ชื่อผู้ใช้งาน</label>
@@ -100,7 +131,9 @@ export default function Login() {
                     name="username"
                     placeholder="กรอกชื่อผู้ใช้งาน หรืออีเมล"
                     type="text"
-                    defaultValue="somchai.jai@moe.go.th"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    disabled={isLoading}
                   />
                 </div>
               </div>
@@ -118,11 +151,18 @@ export default function Login() {
                     id="password"
                     name="password"
                     placeholder="••••••••"
-                    type="password"
-                    defaultValue="password123"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={isLoading}
                   />
-                  <button className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors" type="button">
-                    <Eye className="w-5 h-5" />
+                  <button 
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors" 
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    disabled={isLoading}
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
@@ -131,7 +171,7 @@ export default function Login() {
               <div className="flex items-center pt-2">
                 <label className="flex items-center cursor-pointer group">
                   <div className="relative">
-                    <input className="sr-only peer" type="checkbox" />
+                    <input className="sr-only peer" type="checkbox" disabled={isLoading} />
                     <div className="w-5 h-5 border border-slate-700 bg-slate-950/50 rounded-md peer-checked:bg-indigo-600 peer-checked:border-indigo-500 transition-all flex items-center justify-center">
                       <Check className="text-white w-3 h-3 scale-0 peer-checked:scale-100 transition-transform stroke-[3]" />
                     </div>
@@ -141,11 +181,21 @@ export default function Login() {
               </div>
               
               <button
-                className="w-full bg-indigo-600 text-white py-4 rounded-full font-bold text-[10px] tracking-widest uppercase hover:bg-indigo-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4"
+                className="w-full bg-indigo-600 text-white py-4 rounded-full font-bold text-[10px] tracking-widest uppercase hover:bg-indigo-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-70 disabled:pointer-events-none"
                 type="submit"
+                disabled={isLoading}
               >
-                <span>เข้าสู่ระบบ</span>
-                <LogIn className="w-4 h-4 mb-0.5" />
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>กำลังเข้าสู่ระบบ...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>เข้าสู่ระบบ</span>
+                    <LogIn className="w-4 h-4 mb-0.5" />
+                  </>
+                )}
               </button>
             </form>
             
