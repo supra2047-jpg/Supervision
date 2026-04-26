@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import {
   Menu,
   Home,
@@ -7,11 +7,19 @@ import {
   Users,
   Sliders,
   Dashboard as DashboardIcon,
-  Briefcase
+  Briefcase,
+  LogOut
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 
 export default function AppLayout() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // In a real app, you would clear authentication state/tokens here
+    navigate("/login");
+  };
+
   return (
     <div className="bg-slate-950 text-slate-50 mb-20 md:mb-0 min-h-screen">
       {/* TopAppBar */}
@@ -23,20 +31,29 @@ export default function AppLayout() {
             </button>
             <h1 className="text-xl font-bold text-slate-50 uppercase tracking-tight">ระบบนิเทศการศึกษา</h1>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="text-right hidden sm:block">
-              <p className="font-sans text-xs font-bold uppercase tracking-widest text-slate-50">
-                ดร. สมชาย ใจดี
-              </p>
-              <p className="text-[10px] text-slate-500 uppercase tracking-widest">รหัสผู้นิเทศ: 99283</p>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <div className="text-right hidden sm:block">
+                <p className="font-sans text-xs font-bold uppercase tracking-widest text-slate-50">
+                  ดร. สมชาย ใจดี
+                </p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest">รหัสผู้นิเทศ: 99283</p>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-slate-800 overflow-hidden border-2 border-slate-800 relative group cursor-pointer">
+                <img
+                  alt="User Profile Avatar"
+                  className="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp2KEhnvrnMABakp9m-4frUzWtaZRsHL1_9YZ5rDZ4otlBaoYnB4ZLYNuX2ss5YoiIkX-saiiG67RgP5RYeByVpvdlOTaDZkcOQC0YGhqNhX4EDU7IGFv6umsgUdhMFgtulstK-nYZcOr0p0uIymetboXXQuFgGluxzSASG567xgxXdXDaqclkJmHBb8ik8OSoDWb4loAo7xUBd8lwz_g7eoalMkLlgYIIcQ17iLD2p6R6MY9TxYuQbkSRlXcTm9gU3-DWHNEMGD0"
+                />
+              </div>
             </div>
-            <div className="w-10 h-10 rounded-full bg-slate-800 overflow-hidden border-2 border-slate-800">
-              <img
-                alt="User Profile Avatar"
-                className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp2KEhnvrnMABakp9m-4frUzWtaZRsHL1_9YZ5rDZ4otlBaoYnB4ZLYNuX2ss5YoiIkX-saiiG67RgP5RYeByVpvdlOTaDZkcOQC0YGhqNhX4EDU7IGFv6umsgUdhMFgtulstK-nYZcOr0p0uIymetboXXQuFgGluxzSASG567xgxXdXDaqclkJmHBb8ik8OSoDWb4loAo7xUBd8lwz_g7eoalMkLlgYIIcQ17iLD2p6R6MY9TxYuQbkSRlXcTm9gU3-DWHNEMGD0"
-              />
-            </div>
+            <button 
+              onClick={handleLogout}
+              className="flex items-center justify-center p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-all ml-1"
+              title="ออกจากระบบ"
+            >
+              <LogOut className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </header>
@@ -101,6 +118,13 @@ export default function AppLayout() {
                 <Sliders className="w-5 h-5" /> ตั้งค่าระบบ
               </NavLink>
             </div>
+
+            <button 
+              onClick={handleLogout}
+              className="mt-6 mx-2 mb-2 px-4 py-3 rounded-xl transition-all duration-200 ease-in-out flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-left text-slate-400 hover:bg-rose-500/10 hover:text-rose-400"
+            >
+              <LogOut className="w-5 h-5" /> ออกจากระบบ
+            </button>
 
              <div className="mt-auto px-6 py-4 border-t border-slate-800 w-full flex items-center gap-3 justify-start">
                 <div className="flex items-center gap-3 w-full">

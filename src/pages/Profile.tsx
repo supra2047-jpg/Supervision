@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { 
   ShieldCheck, 
@@ -9,13 +10,19 @@ import {
   History, 
   GraduationCap,
   Save,
-  X
+  X,
+  LogOut
 } from "lucide-react";
 
 export default function Profile() {
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState("ดร. สมชาย ใจดี");
   const [title, setTitle] = useState("ศึกษานิเทศก์ชำนาญการพิเศษ");
+
+  const handleLogout = () => {
+    navigate("/login");
+  };
 
   return (
     <motion.div 
@@ -226,6 +233,16 @@ export default function Profile() {
           </div>
           
         </div>
+      </div>
+
+      <div className="mt-8">
+        <button 
+          onClick={handleLogout}
+          className="w-full sm:w-auto bg-slate-900 text-rose-400 border border-rose-500/20 px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow-rose-500/20"
+        >
+          <LogOut className="w-5 h-5" />
+          ออกจากระบบ
+        </button>
       </div>
     </motion.div>
   );
